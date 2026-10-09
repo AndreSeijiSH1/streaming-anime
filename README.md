@@ -7,7 +7,7 @@
 <!-- Coloque aqui os prints do site (salve as imagens numa pasta "prints/" do repositório) -->
 | Desktop | Celular |
 |---|---|
-| ![Versão desktop](prints/desktop.png) | ![Versão celular](prints/celular.png) |
+| ![Versão desktop](img/tela_pc.png) | ![Versão celular](img/tela_celular.png) |
 
 ---
 
