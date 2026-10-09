@@ -2,7 +2,7 @@
 
 > Projeto de estudo: uma página de assinatura de um serviço de streaming **fictício**, feita **apenas com HTML e CSS**, sem frameworks e sem JavaScript.
 
-🔗 **Site no ar:** [https://andreseijish1.github.io/streaming-anime/]
+🔗 **Site no ar:** [https://site-assinatura-anime.netlify.app]
 
 <!-- Coloque aqui os prints do site (salve as imagens numa pasta "prints/" do repositório) -->
 | Desktop | Celular |
