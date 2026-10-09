@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sekai Stream | Projeto de estudo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ============================== TOPO ============================== -->
+    <header>
+        <div class="topo">
+            <h1><a href="#">Sekai Stream</a></h1>
+
+            <div class="topo-acoes">
+                <a href="#" class="botao botao-branco">Entrar</a>
+                <!-- href="#planos" leva até o elemento com id="planos" na mesma página -->
+                <a href="#planos" class="botao botao-destaque">Ver planos</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ============================== HERO ============================== -->
+        <section class="hero">
+            <h2>Seus animes favoritos em um só lugar</h2>
+            <p>Assista quando e onde quiser, no computador ou no celular.</p>
+            <a href="#planos" class="botao botao-destaque">Ver planos</a>
+        </section>
+
+        <!-- ============================== PLANOS ============================== -->
+        <section class="escolher-assinatura" id="planos">
+            <h2>Escolha seu plano</h2>
+
+            <!-- Pílula Mensal / Anual -->
+            <div class="botao-assinatura">
+                <button type="button" aria-pressed="true">Mensal</button>
+                <button type="button" aria-pressed="false">Anual (economize 40%)</button>
+            </div>
+
+            <!-- Container flex dos cards -->
+            <div class="plano-assinatura">
+
+                <!-- Plano Básico -->
+                <article class="plano">
+                    <h3 class="plano-nome">Básico</h3>
+                    <p class="plano-preco">R$ 19,90/mês</p>
+                    <p class="plano-taxa-imposto">valores fictícios</p>
+                    <a href="#" class="plano-teste">Escolher este plano</a>
+                    <a href="#" class="pular-teste">Ver detalhes</a>
+
+                    <ul class="lista-beneficios">
+                        <li>Sem anúncios</li>
+                        <li>Acesso completo ao catálogo</li>
+                        <li>Episódios novos toda semana</li>
+                        <li>Assista em <strong>1 tela</strong> por vez</li>
+                        <li>Download para assistir offline</li>
+                    </ul>
+                </article>
+
+                <!-- Plano Premium -->
+                <article class="plano">
+                    <span class="plano-destaque">O MAIS POPULAR</span>
+                    <h3 class="plano-nome">Premium</h3>
+                    <p class="plano-preco">R$ 24,90/mês</p>
+                    <p class="plano-taxa-imposto">valores fictícios</p>
+                    <a href="#" class="plano-teste plano-teste-destaque">Escolher este plano</a>
+                    <a href="#" class="pular-teste">Ver detalhes</a>
+
+                    <ul class="lista-beneficios">
+                        <li>Sem anúncios</li>
+                        <li>Acesso completo ao catálogo</li>
+                        <li>Episódios novos toda semana</li>
+                        <li>Assista em até <strong>4 telas</strong> ao mesmo tempo</li>
+                        <li>Download para assistir offline</li>
+                        <li>Qualidade de imagem em 4K</li>
+                    </ul>
+                </article>
+
+            </div>
+
+            <!-- Aviso dos planos -->
+            <p class="aviso-assinatura">
+                <small>*Planos e preços fictícios. Este site é um projeto de estudo de HTML e CSS e não oferece nenhum serviço real.</small>
+            </p>
+        </section>
+
+    </main>
+
+    <!-- ============================== RODAPÉ ============================== -->
+    <footer class="rodape">
+        <p><small>Projeto de estudo de HTML e CSS por André Seiji Shiroma. Marca, planos e preços fictícios.</small></p>
+    </footer>
+</body>
+</html>

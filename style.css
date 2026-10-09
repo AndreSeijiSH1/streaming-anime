@@ -1,0 +1,354 @@
+/* ==========================================================================
+   ÍNDICE
+   1. Variáveis
+   2. Base (reset e herança)
+   3. Componentes reutilizáveis (botões)
+   4. Topo (header)
+   5. Hero (.hero)
+   6. Planos (.escolher-assinatura)
+      6.1 Pílula Mensal / Anual
+      6.2 Cards
+      6.3 Conteúdo dos cards
+   7. Rodapé
+   8. Media Query (adaptação para celular)
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. VARIÁVEIS
+   Valores definidos uma vez e reutilizados no arquivo inteiro.
+   ========================================================================== */
+:root {
+    --cor-destaque: #5aa9e6;
+    --cor-destaque-claro: #8cc4f0;
+    --cor-preto: #000000;
+    --cor-branco: #ffffff;
+    --cor-cinza: #b8adad;
+
+    --padding-padrao: 16px;
+
+    --fonte-arial: Arial, Helvetica, sans-serif;
+}
+
+
+/* ==========================================================================
+   2. BASE
+   Regras que valem para o site todo. Sempre no começo do arquivo.
+   ========================================================================== */
+
+/* width/height passam a incluir padding e borda (a "regra da conta") */
+* {
+    box-sizing: border-box;
+}
+
+/* Herança: cor, fundo e fonte definidos uma vez; todos os filhos herdam */
+body {
+    margin: 0; /* tira a margem padrão do navegador */
+    background-color: var(--cor-preto);
+    color: var(--cor-branco);
+    font-family: var(--fonte-arial);
+}
+
+header {
+    padding: var(--padding-padrao);
+}
+
+/* sem padding: o hero com imagem encosta nas bordas da tela */
+main {
+    padding: 0;
+}
+
+/* Links não herdam a cor do body, então precisam de regra própria */
+a {
+    text-decoration: none;
+    color: var(--cor-branco);
+}
+
+/* Respiro em cima e embaixo de todas as sections (0 nas laterais) */
+section {
+    padding: 180px 0;
+}
+
+
+/* ==========================================================================
+   3. COMPONENTES REUTILIZÁVEIS: BOTÕES
+   Classe base (.botao) + variações (.botao-destaque / .botao-branco).
+   No HTML: class="botao botao-destaque"
+   ========================================================================== */
+
+/* O que TODO botão tem em comum */
+.botao {
+    display: inline-block; /* permite padding de verdade num link */
+    padding: 12px 24px;
+    border-radius: 999px;  /* formato de pílula */
+    font-weight: bold;
+}
+
+/* Variação: preenchido com a cor de destaque, texto preto */
+.botao-destaque {
+    background-color: var(--cor-destaque);
+    color: var(--cor-preto);
+    border: 2px solid var(--cor-destaque); /* mesma espessura do botão branco = mesma altura */
+}
+
+/* Variação: transparente com borda branca */
+.botao-branco {
+    background-color: transparent;
+    color: var(--cor-branco);
+    border: 2px solid var(--cor-branco);
+}
+
+
+/* ==========================================================================
+   4. TOPO (header)
+   ========================================================================== */
+
+/* Logo à esquerda, bloco de links à direita */
+.topo {
+    display: flex;
+    justify-content: space-between; /* eixo principal: um em cada ponta */
+    align-items: center;            /* eixo cruzado: mesma altura */
+}
+
+/* "Entrar" + "Ver planos" juntinhos */
+.topo-acoes {
+    display: flex;
+    gap: 8px;
+}
+
+/* ==========================================================================
+   5. HERO (.hero)
+   ========================================================================== */
+
+.hero {
+    padding-left: 8rem;
+    padding-right: 8rem;
+    /* Fundo feito só com CSS: dois "brilhos" coloridos sobre o preto.
+       Para usar uma foto, acrescente uma camada no fim da lista, ex.:
+       url("img/sua-imagem-livre.jpg") — e mantenha uma camada escura por cima. */
+    background-image:
+        radial-gradient(circle at 80% 30%, rgba(90, 169, 230, 0.35), transparent 50%),
+        radial-gradient(circle at 15% 85%, rgba(150, 100, 230, 0.25), transparent 45%);
+    background-color: var(--cor-preto);
+}
+
+/* Tamanho de fonte em cada elemento, e não no pai (evita herança multiplicada) */
+.hero h2 {
+    font-size: 7.5rem;
+    max-width: 12ch; /* no máximo ~12 letras por linha: quebra sem precisar de <br> */
+}
+
+.hero p {
+    font-size: 1.9rem;
+}
+
+/* O botão do hero é maior que o do header */
+.hero .botao {
+    font-size: 25px;
+    padding: 30px;
+}
+
+
+/* ==========================================================================
+   6. PLANOS (.escolher-assinatura)
+   ========================================================================== */
+
+.escolher-assinatura {
+    text-align: center; /* herdado por título, pílula e cards */
+    padding-left: var(--padding-padrao);
+    padding-right: var(--padding-padrao);
+}
+
+.escolher-assinatura h2 {
+    font-size: 50px;
+    margin-bottom: 32px;
+}
+
+
+/* ---------- 6.1 Pílula Mensal / Anual ---------- */
+
+/* A caixa com borda colorida em volta dos dois botões */
+.botao-assinatura {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;     /* a caixa fica do tamanho dos botões */
+    margin: 0 auto 42px;    /* centraliza a caixa | 42px embaixo */
+    padding: 8px;
+    border: 2px solid var(--cor-destaque);
+    border-radius: 35px;
+}
+
+/* Padrão: todo botão da pílula começa "desligado" */
+.botao-assinatura button {
+    padding: 12px 24px;
+    border: none;           /* tira a borda padrão do navegador */
+    border-radius: 999px;
+    background-color: transparent;
+    color: var(--cor-branco);
+    font-weight: bold;
+}
+
+/* Exceção: só o botão "ligado" fica colorido (vem DEPOIS do padrão para vencer) */
+.botao-assinatura [aria-pressed="true"] {
+    background-color: var(--cor-destaque);
+    color: var(--cor-preto);
+}
+
+
+/* ---------- 6.2 Cards ---------- */
+
+/* Container flex: os cards lado a lado e com a mesma altura (stretch) */
+.plano-assinatura {
+    display: flex;
+    justify-content: center;
+    gap: 13px;
+}
+
+/* Cada card (Básico e Premium usam a mesma classe) */
+.plano {
+    padding: 16px;
+    border: 1.5px solid var(--cor-destaque);
+    border-radius: 15px;
+}
+
+
+/* ---------- 6.3 Conteúdo dos cards ---------- */
+
+.plano-nome{
+    font-size: 2.5rem;
+    font-weight: bolder;
+}
+
+.plano-preco {
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+.plano-taxa-imposto{
+    font-size: x-small;
+    color: var(--cor-cinza);
+}
+
+/* Os dois links ocupam cada um a própria linha */
+.plano-teste,
+.pular-teste{
+    display: block;
+    padding: 12px;
+}
+
+.pular-teste{
+    font-weight: bolder;
+    color: var(--cor-cinza);
+}
+/* "Escolher este plano": pílula com borda colorida */
+.plano-teste {
+    border: 1.5px solid var(--cor-destaque);
+    border-radius: 30px;
+    font-weight: bolder;
+    color: var(--cor-destaque-claro);
+    
+}
+.plano-teste-destaque{
+    background-color: var(--cor-destaque);
+    color: var(--cor-preto);
+}
+
+/* Hover (mouse) e focus-visible (teclado) com o mesmo efeito */
+.plano-teste:hover,
+.plano-teste:focus-visible,
+.pular-teste:hover,
+.pular-teste:focus-visible {
+    color: var(--cor-destaque-claro);
+}
+/*Mudando a cor da pilula em destaque*/
+.plano-teste-destaque:hover,
+.plano-teste-destaque:focus-visible {
+    color: var(--cor-preto);
+}
+/* Lista sempre à esquerda, mesmo com o card centralizado */
+.lista-beneficios {
+    list-style: none;
+    text-align: left;
+    padding: 0;
+}
+.lista-beneficios li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 12px;
+}
+/* Destaque colorido só dentro da lista de benefícios */
+.lista-beneficios strong {
+    color: var(--cor-destaque);
+}
+
+.lista-beneficios li::before {
+    content: "✓";
+    color: var(--cor-destaque);
+    position: absolute;
+    left: 0;
+}
+/*tirando a margem padrão do navegador*/
+.plano-nome,
+.plano-preco{
+    margin: 0;
+}
+
+.plano span{
+    color: var(--cor-cinza);
+    font-weight: bolder;
+}
+
+.plano-destaque::before { content: "✨ "; }
+.plano-destaque::after  { content: " ✨"; }
+
+
+
+/* ==========================================================================
+   7. RODAPÉ
+   ========================================================================== */
+.rodape {
+    padding: var(--padding-padrao);
+    text-align: center;
+    color: var(--cor-cinza);
+}
+
+
+/* ==========================================================================
+   8. Media Query (adaptação para celular)
+   ========================================================================== */
+@media (max-width: 768px) {
+    section {
+        padding: 48px 0; 
+    }
+    .botao{
+        white-space: nowrap;
+    }
+    /*================================TOPO=======================================*/
+    .topo h1{
+        font-size: 1.7rem;
+    }
+
+    /*===============================HERO=======================================*/
+    .hero{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .hero h2{
+        font-size: 2.5rem;
+    }
+    .hero p{
+        font-size: 1rem;
+    }
+    .hero .botao{
+        font-size: 15px;
+        padding: 16px;
+    }
+    .topo-acoes .botao-destaque{
+        display: none;
+    }
+    /*==================================PLANOS=======================================*/
+    .plano-assinatura{
+        flex-direction: column; /* cards empilhados no celular */
+    }
+}
